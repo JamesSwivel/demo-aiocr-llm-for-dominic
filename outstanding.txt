@@ -2,106 +2,12 @@
 === HIGH PRIORITY
 =========================================================================================
 
-[ NEXT ]
-- Prepare for Dominic Jebsen case
-- Rest Client preview test 
-- Add name to all endpoint
-- non-blocking file write
-  - All APIs that will generate images need worker
-  - However, if the API needs to download the file, it will wait for the completion of image generation
-    Otherwise, it will returns ASAP
-- Mongo log, cost calculation
-- image API supports pdf-image and doc
-- log worker
-- Swivel-common: rate-limiting, compressPrompt 
-
-[ NEXT ]
-- move to WSL?
-- WSL Ctrl-c, multi processing/threading graceful exit
-- If parent process does not exist, exit the worker process automatically
-
-[ blocking issue ]
-- will write images blocks?
-
-[Misc]
-- Response fileUrl
-  - path should include API endpoint
-  - add full URL
-
-[ BUG ]
-- /pdf/upload/extractFullText
-  isGen: false, is GenRoi: false but fileUrl will generate
-
-[ Performance tuning ]
-- Paddle queue, one image per job? A large pdf, say 50 pages, will occupy a while queue?
-- How many paddle processes can run on a GPU server?
-
-[ Airway bill ]
-- Airway bill pre-processing?
-
-[ Misc ]
-- common onFull_() 
-- Housekeeping worker
 
 =========================================================================================
 === NORMAL PRIORITY
 =========================================================================================
 
-[ Deployment concern ] 
-- Migrate all code to dev and test on WSL
-- Well test the multi-threading and process behavior 
-- Test nginx reverse proxy and custom headers
-  extract real list of HOST, PORT, URL
-
-[ Swagger API doc ]
-- How to document different http exit code, e.g. 422, 401, 422
-
-[ doc tools ] 
-- From xls, doc, pdf-image, pdf-text to images
-
-[ API error and other errors ]
-- internal and external error... 
-- differentiate 500 with wrong file, e.g. pdf uploaded as image
-
-[ server ]
-- Handle port already been used error
-
-[ API limits ]
-- control upload size?
-- JWT rate limiting
-
-[ info/status API ]
-- get status
-
-[ performance tuning ]
-- Write multiple image faster.. using MP worker? skimage.io.multisave?
-
-[ freeze packages ]
-- PaddleOCR + dependent files
 
 =========================================================================================
 === LOW PRIORITY
 =========================================================================================
-[ admin API ]
-- get ver
-- get status
-- For API /decodeToken, it needs admin rights
-
-[ documentation ]
-- Use markdown for function, types, class documentation
-- Refer to Edwood code
-
-[ WSL/Ubuntu ]
-- GPUInfo raise utf-8 error
-- After CTRL-C, process are not killed
-
-[ pypdfium2 ]
-- If pypdfium2 has better performance converting pdf to images                
-
-[ file upload ]
-- time out multipart/form-data
-
-[ app config ]
-- max file size, e.g 10MB
-- max page to process, e.g. 10
-- no. of multi-thread worker for pdf2image 
