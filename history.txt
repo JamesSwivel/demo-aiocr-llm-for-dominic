@@ -1,9 +1,23 @@
 ===================================================================
-2024-09-06 FRI v0.0.118
+2024-09-11 WED v1.0.3
 
 [ Summary ]
-https://github.com/swivelsoftware/xdata-aiocr-engine-api/compare/1.0.1..1.0.2
-- Update to swivel-common 1.0.12
+https://github.com/JamesSwivel/demo-aiocr-llm-for-dominic/compare/1.0.2..1.0.3
+
+[ Bug fix ]
+- Nil
+
+[ New ]
+- Nil
+
+[ Improvement ]
+- Nil
+
+===================================================================
+2024-09-11 WED v1.0.2
+
+[ Summary ]
+https://github.com/JamesSwivel/demo-aiocr-llm-for-dominic/compare/1.0.1..1.0.2
 
 [ Bug fix ]
 - Nil
