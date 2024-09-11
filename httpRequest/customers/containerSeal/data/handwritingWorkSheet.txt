@@ -1,0 +1,47 @@
+                                             WENT Driver'sDaily Diary
+    司機         49W    NLS
+                                                  日期                          Veticde No
+                           Driver                                          Date
+                  開工間        人油前請数
+               開工理散                   Staring Hour Meter               MeterRengBeoreRf
+                           StartingMleage
+      收工数       收工時間        入油後数
+                                                                           Finishing Hour                                 MeterReadingAffer Ret
+                           FinishingMileag
+                     總時間          绕油数
+                                                                           Total Hour                                   Total Litre
+                     Total KmRu
+                    凰凰表    图表     水温表
+      號
+                                 Jghtungs                                                                    哒纹T
+       燃油            水箱水    催板警告烟   放凰缸水
+                                 後車提示                                              DrainAir-Comp          yre
+                    EngineOil                                Vater-Level                                  Tank
+                  植號    重植上車時間  吉模上船時间    尾門情况
+                                                                        EmptyTime       R-Door Condition               Remark
+                          Container No    Loaded Time    C30                          01-5
+     1  S202               M
+       2   354   o30
+      3  686       030        动福
+              728          1000
+          5     T49   (000   (080
+                      030   (00
+        7    754         (30
+                 110   (135    265
+        9    C312  205   RO           01-5
+        10    T32C  230   307
+        11    65  1300  B33
+       12    746  353   4
+          13     395
+         14     2 44          1830
+       15          600   (60
+        16    62  G30    700
+            334        130
+       18    654  730
+            19
+               20
+            21
+            22
+              23
+              24
+                  25

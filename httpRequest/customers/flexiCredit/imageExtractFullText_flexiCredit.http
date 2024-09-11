@@ -1,0 +1,45 @@
+@HostAddress = https://127.0.0.1:8000
+
+### full text
+POST {{HostAddress}}/image/upload/extractFullText
+Accept: application/json
+Content-Type: multipart/form-data; boundary=MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="req"
+
+{
+  "req": {
+    "id": "reference_id_00001"
+  }, 
+  "ocr": {},
+  "image": {
+    "isGenRoi": true,
+    "isBase64": false
+  }
+}
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="file"; filename="test-file-1.pdf"
+Content-Type: application/octet-stream
+
+< receipt1.jpg
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="file"; filename="test-file-2.pdf"
+Content-Type: application/octet-stream
+
+< receipt2.jpg
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="file"; filename="test-file-2.pdf"
+Content-Type: application/octet-stream
+
+< receipt3.jpg
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="file"; filename="test-file-2.pdf"
+Content-Type: application/octet-stream
+
+< receipt4.jpg
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5--
+
+
+
+

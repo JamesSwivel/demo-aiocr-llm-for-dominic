@@ -1,0 +1,113 @@
+@HostAddress = https://xdata-staging.ddns.net:8000
+
+
+#############################################################################
+### vehicle license plate + weight slip
+#############################################################################
+POST {{HostAddress}}/image/upload/extractFullText
+Accept: application/json
+Content-Type: multipart/form-data; boundary=MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="req"
+
+{
+  "req": {
+    "id": "reference_id_00001"
+  }, 
+  "ocr": {},
+  "image": {
+    "isGenRoi": true
+  }
+}
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="file"; filename="test-file-2.pdf"
+Content-Type: application/octet-stream
+
+< data/vechileLicensePlate.jpg
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="file"; filename="test-file-2.pdf"
+Content-Type: application/octet-stream
+
+< data/weightSlip.jpg
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5--
+
+
+#############################################################################
+### Container seal
+#############################################################################
+POST {{HostAddress}}/image/upload/extractFullText
+Accept: application/json
+Content-Type: multipart/form-data; boundary=MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="req"
+
+{
+  "req": {
+    "id": "reference_id_00001"
+  }, 
+  "ocr": {},
+  "image": {
+    "isGenRoi": true
+  }
+}
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="file"; filename="test-file-1.pdf"
+Content-Type: application/octet-stream
+
+< data/containerSealLarge.jpg
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="file"; filename="test-file-2.pdf"
+Content-Type: application/octet-stream
+
+< data/containerSealLargeRotated.jpg
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="file"; filename="test-file-2.pdf"
+Content-Type: application/octet-stream
+
+< data/containerSealSmall.jpg
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="file"; filename="test-file-2.pdf"
+Content-Type: application/octet-stream
+
+< data/handwritingWorkSheet.jpg
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="file"; filename="test-file-2.pdf"
+Content-Type: application/octet-stream
+
+< data/vechileLicensePlate.jpg
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="file"; filename="test-file-2.pdf"
+Content-Type: application/octet-stream
+
+< data/weightSlip.jpg
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5--
+
+
+#############################################################################
+### Handwriting worksheet
+#############################################################################
+POST {{HostAddress}}/image/upload/extractFullText
+Accept: application/json
+Content-Type: multipart/form-data; boundary=MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="req"
+
+{
+  "req": {
+    "id": "reference_id_00001"
+  }, 
+  "ocr": {},
+  "image": {
+    "isGenRoi": true
+  }
+}
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="file"; filename="test-file-2.pdf"
+Content-Type: application/octet-stream
+
+< data/handwritingWorkSheet.jpg
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5--
+

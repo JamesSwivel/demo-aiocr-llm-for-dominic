@@ -1,5 +1,7 @@
 @HostAddress = https://xdata-staging.ddns.net:8000
 
+@page = 1
+
 ### test
 GET {{HostAddress}}/tools/ping
 
@@ -12,7 +14,7 @@ Content-Type: multipart/form-data; boundary=MyBoundaryuiqoeruijdslkfj832U9R8WR8H
 Content-Disposition: form-data; name="file"; filename="test.pdf"
 Content-Type: application/octet-stream
 
-< DH Debit Notes.pdf
+< data/DH Debit Notes.pdf
 --MyBoundaryuiqoeruijdslkfj832U9R8WR8HSDFJiodsjF8
 Content-Disposition: form-data; name="req"
 
@@ -25,7 +27,7 @@ Content-Disposition: form-data; name="req"
         "isGenRoi": true
     },
     "pdf": {
-        "pages": [2],
+        "pages": [{{page}}],
         "template": {
             "name": "DH",
             "engine": "text",

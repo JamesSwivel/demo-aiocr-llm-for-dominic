@@ -1,0 +1,123 @@
+@HostAddress = https://127.0.0.1:8000
+
+### LLM entity extraction from flexiCredit receipts
+POST {{HostAddress}}/txt/upload/AI/LLM/entityExtract
+Accept: application/json
+Content-Type: multipart/form-data; boundary=MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="req"
+
+{
+  "StagingAccessKey": "swivelsoftware",
+  "req": {
+    "id": "reference_id_00001"
+  },
+  "entities": {
+    "depositDatetime": {
+      "entityName": "depositDatetime",
+      "description": "Extract Deposit or transaction datetime if it looks like an deposit or transaction receipt.  Then, convert the value into ISO8601 format.  If extracted value is not a valid date or datetime, leave it an empty string output.",
+      "defaultValue": "--"
+    },
+    "amount": {
+      "entityName": "amount",
+      "description": "Deposit or transaction dollar amount if it looks like an deposit or transaction receipt",
+      "defaultValue": "---"
+    },
+    "accountNumber": {
+      "entityName": "accountNumber",
+      "description": "Deposit or transaction account number if it looks like an deposit or transaction receipt",
+      "defaultValue": "---"
+    },
+    "accountName": {
+      "entityName": "accountName",
+      "description": "Deposit or transaction account name if it looks like an deposit or transaction receipt.  The name info in the input may be masked by * characters",
+      "defaultValue": "---"
+    },
+    "transactionRefNumber": {
+      "entityName": "transactionRefNumber",
+      "description": "Deposit or transaction reference number if it looks like an deposit or transaction receipt.",
+      "defaultValue": "---"
+    }
+  }
+}
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="file"; filename="test-file-1.pdf"
+Content-Type: application/octet-stream
+
+< data/receipt2.txt
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5--
+
+
+
+### LLM entity extraction from flexiCredit receipts
+POST {{HostAddress}}/txt/upload/AI/LLM/multiTextEntityExtract
+Accept: application/json
+Content-Type: multipart/form-data; boundary=MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="req"
+
+{
+ "StagingAccessKey": "swivelsoftware",
+ "req": {
+    "id": "reference_id_00001"
+  },
+  "entities": {
+    "depositDatetime": {
+      "entityName": "depositDatetime",
+      "description": "Extract Deposit or transaction datetime if it looks like an deposit or transaction receipt.  Then, convert the value into ISO8601 format.  If extracted value is not a valid date or datetime, leave it an empty string output.",
+      "defaultValue": "--"
+    },
+    "amount": {
+      "entityName": "amount",
+      "description": "Deposit or transaction dollar amount if it looks like an deposit or transaction receipt",
+      "defaultValue": "---"
+    },
+    "accountNumber": {
+      "entityName": "accountNumber",
+      "description": "Deposit or transaction account number if it looks like an deposit or transaction receipt",
+      "defaultValue": "---"
+    },
+    "accountName": {
+      "entityName": "accountName",
+      "description": "Deposit or transaction account name if it looks like an deposit or transaction receipt.  The name info in the input may be masked by * characters",
+      "defaultValue": "---"
+    },
+    "transactionRefNumber": {
+      "entityName": "transactionRefNumber",
+      "description": "Deposit or transaction reference number if it looks like an deposit or transaction receipt.",
+      "defaultValue": "---"
+    }
+  },
+  "inputs": [
+    {"entityNames": []},
+    {"entityNames": []},
+    {"entityNames": []},
+    {"entityNames": []}
+  ]
+}
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="file"; filename="test-file-1.pdf"
+Content-Type: application/octet-stream
+
+< data/receipt1.txt
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="file"; filename="test-file-1.pdf"
+Content-Type: application/octet-stream
+
+< data/receipt2.txt
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="file"; filename="test-file-1.pdf"
+Content-Type: application/octet-stream
+
+< data/receipt3.txt
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="file"; filename="test-file-1.pdf"
+Content-Type: application/octet-stream
+
+< data/receipt4.txt
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5--
+
+
+
