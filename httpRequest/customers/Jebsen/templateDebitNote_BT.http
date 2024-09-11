@@ -1,0 +1,160 @@
+@HostAddress = https://xdata-staging.ddns.net:8000
+
+### test
+GET {{HostAddress}}/tools/ping
+
+### BT
+POST {{HostAddress}}/pdf/upload/extractByTemplate
+Accept: application/json
+Content-Type: multipart/form-data; boundary=MyBoundaryfsdhrerr3rwefsfwerewr34rrerwer
+
+--MyBoundaryfsdhrerr3rwefsfwerewr34rrerwer
+Content-Disposition: form-data; name="file"; filename="test.pdf"
+Content-Type: application/octet-stream
+
+< BT Debit Notes.pdf
+--MyBoundaryfsdhrerr3rwefsfwerewr34rrerwer
+Content-Disposition: form-data; name="req"
+
+{
+    "req": {
+        "id": "reference_id_00001"
+    },
+    "image": {
+        "isGen": true,
+        "isGenRoi": true
+    },
+    "pdf": {
+        "pages": [1],
+        "template": {
+            "name": "BT",
+            "engine": "text",
+            "ver": 1,
+            "static": [
+                {
+                    "pageNo": 0,
+                    "pageWidth": 763,
+                    "pageHeight": 1080,
+                    "fields": [
+                        {
+                            "key": "companyName",
+                            "offsetRelativeTo": "page",
+                            "offset": [144, 4],
+                            "width": 478,
+                            "height": 46,
+                            "tolerance": 90,
+                            "delimiter": "",
+                            "isKeepNewLine": false
+                        },
+                        {
+                            "key": "documentDate",
+                            "offsetRelativeTo": "page",
+                            "offset": [565, 137],
+                            "width": 81,
+                            "height": 16,
+                            "tolerance": 90,
+                            "delimiter": "",
+                            "isKeepNewLine": false
+                        },
+                        {
+                            "key": "documentNo",
+                            "offsetRelativeTo": "page",
+                            "offset": [565, 153],
+                            "width": 108,
+                            "height": 16,
+                            "tolerance": 90,
+                            "delimiter": "",
+                            "isKeepNewLine": false
+                        },
+                        {
+                            "key": "documentType",
+                            "offsetRelativeTo": "page",
+                            "offset": [333, 261],
+                            "width": 106,
+                            "height": 33,
+                            "tolerance": 90,
+                            "delimiter": "",
+                            "isKeepNewLine": false
+                        },
+                        {
+                            "key": "total",
+                            "offsetRelativeTo": "page",
+                            "offset": [615, 590],
+                            "width": 116,
+                            "height": 27,
+                            "tolerance": 90,
+                            "delimiter": "",
+                            "isKeepNewLine": false
+                        }
+                    ]
+                }
+            ],
+            "tables": [
+                {
+                    "key": "table",
+                    "pageWidth": 763,
+                    "pageHeight": 1080,
+                    "startAnchor": {
+                        "anchorType": "table",
+                        "topLeftX": 72,
+                        "text": "Fee Type",
+                        "yOffset": 0
+                    },
+                    "endAnchor": {
+                        "anchorType": "table",
+                        "topLeftX": 560,
+                        "text": "Total",
+                        "yOffset": 0
+                    },
+                    "conditionColAlign": "top",
+                    "ignoreHeightFromTop": 0,
+                    "ignoreHeightFromBottom": 0,
+                    "cols": [
+                        {
+                            "key": "amount",
+                            "colType": "condition",
+                            "leftX": 615,
+                            "width": 115,
+                            "extractMode": "inRoi",
+                            "contain": {
+                                "type": "text",
+                                "value": ""
+                            },
+                            "delimiter": "",
+                            "isKeepNewLine": false,
+                            "tolerance": 90
+                        },
+                        {
+                            "key": "feeDescription",
+                            "colType": "simple",
+                            "leftX": 152,
+                            "width": 233,
+                            "delimiter": " ",
+                            "isKeepNewLine": false,
+                            "tolerance": 90
+                        },
+                        {
+                            "key": "startDate",
+                            "colType": "simple",
+                            "leftX": 383,
+                            "width": 117,
+                            "delimiter": " ",
+                            "isKeepNewLine": false,
+                            "tolerance": 90
+                        },
+                        {
+                            "key": "endDate",
+                            "colType": "simple",
+                            "leftX": 498,
+                            "width": 118,
+                            "delimiter": " ",
+                            "isKeepNewLine": false,
+                            "tolerance": 90
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
+--MyBoundaryfsdhrerr3rwefsfwerewr34rrerwer--

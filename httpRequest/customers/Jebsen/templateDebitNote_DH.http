@@ -1,0 +1,195 @@
+@HostAddress = https://xdata-staging.ddns.net:8000
+
+### test
+GET {{HostAddress}}/tools/ping
+
+### DH
+POST {{HostAddress}}/pdf/upload/extractByTemplate
+Accept: application/json
+Content-Type: multipart/form-data; boundary=MyBoundaryuiqoeruijdslkfj832U9R8WR8HSDFJiodsjF8
+
+--MyBoundaryuiqoeruijdslkfj832U9R8WR8HSDFJiodsjF8
+Content-Disposition: form-data; name="file"; filename="test.pdf"
+Content-Type: application/octet-stream
+
+< DH Debit Notes.pdf
+--MyBoundaryuiqoeruijdslkfj832U9R8WR8HSDFJiodsjF8
+Content-Disposition: form-data; name="req"
+
+{
+    "req": {
+        "id": "reference_id_00001"
+    },
+    "image": {
+        "isGen": true,
+        "isGenRoi": true
+    },
+    "pdf": {
+        "pages": [2],
+        "template": {
+            "name": "DH",
+            "engine": "text",
+            "ver": 1,
+            "static": [
+                {
+                    "pageNo": 0,
+                    "pageWidth": 764,
+                    "pageHeight": 1080,
+                    "fields":[
+                        {
+                            "key": "documentType",
+                            "offsetRelativeTo": "page",
+                            "offset": [576, 72],
+                            "width": 125,
+                            "height": 42,
+                            "tolerance": 90,
+                            "delimiter": "",
+                            "isKeepNewLine": false
+                        },
+                        {
+                            "key": "documentDate",
+                            "offsetRelativeTo": "anchor",
+                            "anchor": {
+                                "anchorType": "field",
+                                "text": "    Debit Note Date",
+                                "topLeft": [426, -1]
+                            },
+                            "offset": [200, 0],
+                            "width": 73,
+                            "height": 12,
+                            "tolerance": 90,
+                            "delimiter": "",
+                            "isKeepNewLine": false
+                        },
+                        {
+                            "key": "documentNo",
+                            "offsetRelativeTo": "anchor",
+                            "anchor": {
+                                "anchorType": "field",
+                                "text": "    Debit Note No.",
+                                "topLeft": [426, -1]
+                            },
+                            "offset": [170, 0],
+                            "width": 111,
+                            "height": 13,
+                            "tolerance": 90,
+                            "delimiter": "",
+                            "isKeepNewLine": false
+                        },
+                        {
+                            "key": "DD",
+                            "offsetRelativeTo": "anchor",
+                            "anchor": {
+                                "anchorType": "field",
+                                "text": "To",
+                                "topLeft": [67, -1]
+                            },
+                            "offset": [38, 0],
+                            "width": 251,
+                            "height": 12,
+                            "tolerance": 90,
+                            "delimiter": "",
+                            "isKeepNewLine": false
+                        },
+                        {
+                            "key": "customerName",
+                            "offsetRelativeTo": "anchor",
+                            "anchor": {
+                                "anchorType": "field",
+                                "text": "For and on behalf of ",
+                                "topLeft": [67, -1]
+                            },
+                            "offset": [0, 13],
+                            "width": 157,
+                            "height": 14,
+                            "tolerance": 90,
+                            "delimiter": "",
+                            "isKeepNewLine": false
+                        },
+                        {
+                            "key": "total",
+                            "offsetRelativeTo": "anchor",
+                            "anchor": {
+                                "anchorType": "field",
+                                "text": "Total ",
+                                "topLeft": [518, -1]
+                            },
+                            "offset": [110, 0],
+                            "width": 67,
+                            "height": 12,
+                            "tolerance": 85,
+                            "delimiter": "",
+                            "isKeepNewLine": false
+                        }
+                    ]
+                }
+            ],
+            "tables": [
+                {
+                    "key": "table",
+                    "pageWidth": 764,
+                    "pageHeight": 1080,
+                    "startAnchor": {
+                        "anchorType": "table",
+                        "topLeftX": 67,
+                        "text": "Description (Campaign name)",
+                        "yOffset": 0
+                    },
+                    "endAnchor": {
+                        "anchorType": "table",
+                        "topLeftX": 518,
+                        "text": "Total ",
+                        "yOffset": 0
+                    },
+                    "conditionColAlign": "top",
+                    "ignoreHeightFromTop": 0,
+                    "ignoreHeightFromBottom": 0,
+                    "cols": [
+                        {
+                            "key": "total(HK$)",
+                            "colType": "condition",
+                            "leftX": 563,
+                            "width": 130,
+                            "extractMode": "inRoi",
+                            "contain": {
+                                "type": "text",
+                                "value": ""
+                            },
+                            "delimiter": "",
+                            "isKeepNewLine": false,
+                            "tolerance": 90
+                        },
+                        {
+                            "key": "description",
+                            "colType": "simple",
+                            "leftX": 64,
+                            "width": 352,
+                            "delimiter": " ",
+                            "isKeepNewLine": false,
+                            "tolerance": 90
+                        },
+                        {
+                            "key": "startDate",
+                            "colType": "simple",
+                            "leftX": 414,
+                            "width": 82,
+                            "delimiter": "",
+                            "isKeepNewLine": false,
+                            "tolerance": 90
+                        },
+                        {
+                            "key": "endDate",
+                            "colType": "simple",
+                            "leftX": 493,
+                            "width": 70,
+                            "delimiter": "",
+                            "isKeepNewLine": false,
+                            "tolerance": 90
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
+--MyBoundaryuiqoeruijdslkfj832U9R8WR8HSDFJiodsjF8--

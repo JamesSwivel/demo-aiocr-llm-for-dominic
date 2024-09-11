@@ -1,0 +1,20 @@
+## [ python virtualenv - windows ]
+## > py -3.11 -m venv winEnv
+## > winEnv\Scripts\activate
+##
+## [ python virtualenv - Linux/Ubuntu ]
+## Refer to https://github.com/pyenv/pyenv for installation
+##
+## Create virtualenv
+## $ pyenv update
+## $ pyenv install 3.11.8
+## $ pyenv virtualenv 3.11.8 xdata-aicor-engine-api
+## $ pyenv activate xdata-aicor-engine-api
+##
+## [ install packages ]
+## $ pip install -r requirements.txt
+##
+
+## swivel-common python library (private GitHub repo)\
+swivel-common@git+ssh://lib-py-common.github.com/swivelsoftware/lib-py-common.git@1.0.13
+

@@ -1,2 +1,2 @@
-# demo-aiocr-llm-for-dominic
-Demo of AIOCR x LLM for Dominic
+## Overview
+This is repo including AIOCR x LLM demos for Dominic

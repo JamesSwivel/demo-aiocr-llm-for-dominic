@@ -1,0 +1,620 @@
+===================================================================
+2024-09-06 FRI v0.0.118
+
+[ Summary ]
+https://github.com/swivelsoftware/xdata-aiocr-engine-api/compare/0.0.117..0.0.118
+- Update to swivel-common 1.0.12
+
+
+[ Bug fix ]
+- Nil
+
+[ New ]
+- Nil
+
+[ Improvement ]
+- All LLM APIs are changed to get upload files
+- All upload files are processed and validated by swivel-common parser
+- Add bedrock converse job handler and Q and A API uses job queue
+  
+
+===================================================================
+2024-09-05 THUR v0.0.117
+
+[ Summary ]
+https://github.com/swivelsoftware/xdata-aiocr-engine-api/compare/0.0.116..0.0.117
+- Update to swivel-common 1.0.11
+  SwJwtV3Middleware has class method enable()/disable()
+
+[ Bug fix ]
+- src\lib\ai\util.py
+  compressPrompt() should find out min leading spaces to perform compress
+- src\lib\ai\aws\bedrock\entityExtractor
+  fix a bug in system and user prompt template
+
+[ New ]
+- Nil
+
+[ Improvement ]
+- Setting.json 
+  - Added ocr settings, e.g. no. of ocr workers (For staging, more workers are used, e.g. 10)
+  - Added jwt.isDisableValidation for temporary disable of Jwt validation, while CORS is still effective
+- http files should use 127.0.0.1 instead of 0.0.0.0
+  
+
+
+===================================================================
+2024-09-03 MON v0.0.116
+
+[ Summary ]
+https://github.com/swivelsoftware/xdata-aiocr-engine-api/compare/0.0.115..0.0.116
+- Update to swivel-common 1.0.9 from 1.0.7
+  - Use SwValueException instead of Exception so that API endpoint will be be to response a more accurate 422 error
+  - ApiLog able gets request scheme, hostname and port
+
+[ Bug fix ]
+- Nil
+
+[ New ]
+- httpRequest\LLM
+  LLM entity extraction http files, e.g. sentiment analysis, FlexiCredit, HAWBAmendment, news, doc classification (Norman), Q and A 
+- httpRequest\demo\IATA  
+  Slight changed IATA template
+- 
+  
+
+[ Improvement ]
+- src\lib\ai\aws\bedrock\entityExtractor
+  entityExtractor.py improved version using Python typing approach
+  systemPrompt.txt and userPrompt.txt as prompt template
+- src\lib\ai\aws\bedrock\entityExtractor
+  LLMSingleEntityExtractor 
+- src\lib\api\LLM\LLMEntityExtract
+  - singleEntityExtract.py
+  - multiEntityExtract.py
+- src\lib\api\LLM\LLMQuestionAndAnswer
+  src\lib\api\LLM\LLMQuestionAndAnswer\questionAndAnswer.py
+- src\lib\app\multi\llm.py
+  LLM multi-threading workers
+    
+===================================================================
+2024-08-25 SUN v0.0.115
+
+[ Summary ]
+1. Merge Edwood repo: commit 548680eea
+   - compare: https://github.com/edwoodcheng/pdf-parser-playground/compare/20ed01d0f..548680eea
+   - Added engine to PdfDoc
+   - PdfDoc's engine must match with template's engine
+2. Merge Edwood repo: commit d477e4115
+   - https://github.com/edwoodcheng/llm-playground (first LLM integration)
+3. Using swivel-common package v1.0.6
+   - use SwHttpException for internal/external error message
+4. Implement application profile
+   e.g. SSL cert, port, dev env, JWT settings and etc
+5. Able to use setting.json with comment
+
+[ Bug fix ]
+- src\lib\pdf\extractor\pageTextsToFullText.py
+  Fix a bug spaces between blocks should NOT be zero
+
+[ New ]
+- src\lib\app\settings.py
+  implement cfg\settings.json
+- requirements.txt
+  PyJWT==2.8.0 
+- src\lib\swivel\crypto\jwtHelper.py
+  src\lib\swivel\crypto\testKey.py
+  src\lib\swivel\crypto\swJwtV3.py
+  General JWT and Swivel JWTv3
+
+[ Improvement ]
+- src\lib\app\server.py
+  Not using CORSMiddleware since SwJwtV3Middleware handles CORS + JWTv3
+- src\lib\ai\aws
+  Re-organize of files relevant to AWS, bedrock and LLM classes
+- src\lib\api
+  For error throwing, use SwHttpException instead of HTTPException for unified error message in response
+
+===================================================================
+2024-07-30 TUE v0.0.114
+
+[ Summary ]
+1. Merge Edwood repo: commit 20ed01d0f
+   compare: https://github.com/edwoodcheng/pdf-parser-playground/compare/93012824..20ed01d0f
+2. Minor update on template syntax
+
+[ Bug fix ]
+- Nil
+
+[ New ]
+- src\lib\swivel\ver.py
+  Helper class for semver
+- src\lib\app\version.py
+  App version string defined here
+- src\lib\ai
+  src\lib\ai\aws
+  LLM and bedrock GenAI
+- src\lib\api\tools\tools.py
+  added ping endpoint for server aliveness check
+
+[ Improvement ]
+- src/lib/api/common.py
+  src/lib/pdf/extractor/pageTextsToFullText.py
+  src/lib/pdf/extractor/pdfTextExtractor.py
+  src/lib/pdf/extractor/swPaddleOcr.py
+  src/lib/pdf/extractor/types.py
+  src/lib/pdf/parser/tableTemplateParser.py
+  src/lib/pdf/parser/templateParser.py
+  src/lib/pdf/parser/templateParserCommons.py
+  get rid of x0, x1, top, bottom and change them into a better standard structure of topLeftX, topLeftY, width and height
+- src\lib\app\server.py
+  Allow all host, i.e. disable CORS restrictions
+
+===================================================================
+2024-07-15 MON v0.0.113
+
+[ Summary ]
+- Ditch x0, x1, top and bottom - the old way to describe a rect
+
+[ Bug fix ]
+- Nil
+
+[ New ]
+- src\lib\swivel\ver.py
+  Helper class for semver
+- src\lib\app\version.py
+  App version string defined here
+
+[ Improvement ]
+- src/lib/api/common.py
+  src/lib/pdf/extractor/pageTextsToFullText.py
+  src/lib/pdf/extractor/pdfTextExtractor.py
+  src/lib/pdf/extractor/swPaddleOcr.py
+  src/lib/pdf/extractor/types.py
+  src/lib/pdf/parser/tableTemplateParser.py
+  src/lib/pdf/parser/templateParser.py
+  src/lib/pdf/parser/templateParserCommons.py
+  get rid of x0, x1, top, bottom and change them into a better standard structure of topLeftX, topLeftY, width and height
+
+===================================================================
+2024-07-09 TUE v0.0.112
+
+[ Summary ]
+1. Merge Edwood repo: commit 93012824
+   - template added "name"
+   - httpRequest\demo 
+     Added demo http files
+
+[ Bug fix ]
+- Fixes many minor bugs
+
+[ New ]
+- Nil
+
+[ Improvement ]
+- src\lib\api\pdfClassifyExtractByTemplate\pdfClassifyExtractByTemplate.py
+  respond with selected template name
+- src\lib\api\imageClassifyExtractByTemplate\imageClassifyExtractByTemplate.py  
+  respond with selected template name
+- For text detection, remove "words" mode
+- Allow layout mode in imageExtractText API, e.g. "blocks" or "lines"
+
+===================================================================
+2024-07-06 FRI v0.0.111
+
+[ Summary ]
+1. Merge Edwood repo: commit 6665d336
+   fix bug on confidence level
+
+[ Bug fix ]
+- Nil
+
+[ New ]
+- src\lib\api\pdfClassifyExtractByTemplate
+
+[ Improvement ]
+- For upload image API, check if the upload images are valid image format, e.g. PNG, JPG and etc.
+- Improved .meta.md, e.g. show secure URL expired in sec, instead of just absolute expiry epoch
+- src\lib\pdf\extractor\swPaddleOcr.py
+  - output "lines" layout as well
+  - for "lines" layout, resultant block is calculated from selected blocks in a line, e.g. resultant conf level, ROI
+
+===================================================================
+2024-07-02 TUE v0.0.110
+
+[ Summary ]
+1. Merge Edwood repo
+   - doc anchor
+   - template for images
+
+[ Bug fix ]
+- Nil
+
+[ New ]
+- src\lib\api\imageClassifyExtractByTemplate
+  src\lib\api\imageExtractByTemplate
+  src\lib\api\imageExtractFullText
+
+[ Improvement ]
+- src\lib\pdf\parser
+  - Merge Edwood repo pdf-parser-playground, up to commit 5d131b4e 2024-06-29 00:10
+  - To compare:
+    https://github.com/edwoodcheng/pdf-parser-playground/compare/bf8dd7c9..5d131b4e
+
+===================================================================
+2024-07-02 TUE v0.0.109
+
+[ Summary ]
+1. MultiThreadQueueManager
+   - Rectify potential issue using asyncio in multi-threading workers
+2. MultiProcessQueueManager
+   - multi-processing manager ready for use, especially for PaddleOCR
+3. Support static fields anchor
+4. Support PaddleOCR 
+   - OCR processing on images
+5. Secure short-lived URL for file access
+6. Enhanced API on pdf2image and base64/URL access of result images
+7. Support PaddleOCR full text output
+
+[ Bug fix ]
+- MultiThreadQueueManager (src\lib\swivel\multi\thread.py)
+  - Future.set_result() is not thread safe if invoked in worker thread.
+  - Rectify the issue by explicitly using promise's associated event loop below:
+    get_loop().call_soon_threadsafe(self.startedPromise_.set_result, True)
+
+[ New ]
+- src\lib\api\downloadFIle\downloadFile.py
+  - New download file API
+  - support short-lived secure URL access, protected by access token
+  - Token has a few Advantages
+    - Token is AES256 protected
+    - Similar filePath yields very different token
+    - Token checksum helps rejection fast without AES decryption
+ - src\lib\pdf\extractor\paddleOcrExtractor.py
+  PaddleOcrExtractor
+- src\lib\pdf\extractor\imageTextExtractor.py
+  A ImageTextExtractor class that wrap the PaddleOCR
+- src\lib\pdf\extractor\pdfTextExtractor.py
+  The file is renamed.  It was textExtractor.py before
+- src\lib\swivel\multi\process.py
+  A MultiProcessQueueManager class for multi-processing queue workers
+- src\lib\swivel\util.py
+  isCmdExist(cmd: str) -> bool:
+- src\lib\swivel\gpu.py
+  A NvidiaHelper class to get NVIDIA/CUDA info
+- test\images\regal
+  Added regal test images
+- test\pdfs 
+  - original folder name is test\pdfs
+  - added more pdfs
+- src\lib\swivel\util.py
+  isCmdExist() and runCmd()
+- src\lib\swivel\image\util.py
+  ImageConv utility
+- src\lib\swivel\crypto.py
+  hashKDF() Key derivation function
+
+[ Improvement ]
+- src\lib\pdf\parser
+  - Merge Edwood repo pdf-parser-playground, up to commit bf8dd7c9 2024-06-13 22:49
+  - Support static field anchor
+- Tidy up imports
+  - Remove unused imports in py files
+  - Use | instead of Union for better readability
+  - When searching for keyword, unused imports cause irrelevant search results
+
+
+===================================================================
+2024-05-31 THUR v0.0.108
+
+[ Summary ]
+- Minor updates from Edwood template parser
+
+[ Bug fix ]
+-Nil
+
+[ New ]
+- src\lib\swivel\util.py
+  askQuestionStr(q: str, opts: TQuestionForStrOpts[str] | None = None) -> str:
+  askQuestionInt(q: str, opts: TQuestionForStrOpts[int] | None = None) -> int:
+  askQuestionFloat(q: str, opts: TQuestionForStrOpts[float] | None = None) -> float:
+
+[ Improvement ]
+- Nil 
+
+
+===================================================================
+2024-05-28 TUE v0.0.107
+
+[ Summary ]
+- Integrating Edwood's table template parser
+
+[ Bug fix ]
+-Nil
+
+[ New ]
+- Static and Table parsers
+  src/lib/pdf/parser
+  ├── __init__.py
+  ├── staticTemplateParser.py
+  ├── tableTemplateParser.py
+  ├── templateParser.py
+  ├── templateParserCommons.py
+  └── types.py
+- Swivel image Rect, HLine, VLine
+  src/lib/swivel/image/
+  ├── __init__.py
+  ├── line.py
+  └── rect.py
+- new http files to demonstrate table template parsing
+  httpRequest/
+  └── template
+      ├── bottomBS.http
+      ├── forwarder.http
+      ├── hktvmall.http
+      └── pdfTemplateParser.http
+
+[ Improvement ]
+- Nil 
+
+===================================================================
+2024-05-23 THUR v0.0.106
+
+[ Summary ]
+- Minor rename of API to address the need of new API /pdf/upload/extractByTemplateName
+
+[ Bug fix ]
+-Nil
+
+[ New ]
+- New API: /pdf/upload/extractByTemplateName
+  
+  NOTE: 
+  - This an public facing API (IIS/C#) that requires "templateName" in request payload (form)
+  - For simplicity on payload validation:
+    1. C# only checks the existence of form's req.pdf.templateName (string)
+    2. The actual template JSON should be retrieved from the database
+  - Reverse proxy to backend OCR engine API
+    1. Add to form's req.pdf.template the template JSON from the database
+    2. However, the endpoint is renamed to /pdf/upload/extractByTemplate
+    2. The backend API will validate the request payload and perform template parsing
+  - In summary:
+    /pdf/upload/extractByTemplateName     -> validate templateName + retrieve template JSON from DB ->
+    add template JSON to req.pdf.template ->
+    /pdf/upload/extractByTemplate
+
+
+[ Improvement ]
+- Rename of APIs to support template parsing by templateName
+  /pdf/upload/pdf2FullText       -> /pdf/upload/extractFullText
+  /pdf/upload/pdfExtractText     -> /pdf/upload/extractText
+  /pdf/upload/pdfTemplateParser  -> /pdf/upload/extractByTemplate
+ 
+===================================================================
+2024-05-22 TUE v0.0.105
+
+[ Summary ]
+- Minor change on some type/key names for PdfTemplateParser
+
+[ Bug fix ]
+-Nil
+
+[ New ]
+- Nil
+
+[ Improvement ]
+- Minor updates on type/key names
+  StaticTemplate: width -> pageWidth, height -> pageHeight
+  FieldTemplate: preserveNewLine -> isKeepNewLine
+
+===================================================================
+2024-05-21 TUE v0.0.104
+
+[ Summary ]
+- Incorporate Edwood PdfDataParser into the repo
+
+[ Bug fix ]
+-Nil
+
+[ New ]
+- new API: /pdf/upload/pdfTemplateParser
+  Parse the pdf word blocks into result JSON by template (or format JSON)
+- more pdf on test\data
+  e.g. HKTVMALL pdfs
+
+[ Improvement ]
+- Refactoring of pdf module
+  original: src/lib/swivel/pdf
+  relocated: src/lib/app/pdf
+- PdfParser 
+  class 'PdfParser' => PdfTextExtractor, filename 'parser.py' => textExtractor.py
+  It is also considered as a separated module, instead of the original swivel module
+- Relocation
+  1. test/*.http to httpRequest/*.http
+
+===================================================================
+2024-05-09 THUR v0.0.103
+
+[ Summary ]
+Extracted text result visualized on the result images
+
+[ Bug fix ]
+-Nil
+
+[ New ]
+- src\lib\api\pdfExtractText\pdfExtractText.py
+  Write log for result images (visual extracted text results)
+- src\lib\swivel\image
+  Module that support image draw functions
+
+[ Improvement ]
+- Many misc code minor improvements
+
+===================================================================
+2024-05-06 22:48 MON v0.0.102
+
+[ Summary ]
+pdfExtractText API
+
+[ Bug fix ]
+-Nil
+
+[ New ]
+- pdfExtractText API
+  src\lib\api\pdfExtractText\pdfExtractText.py
+
+[ Improvement ]
+- common types for API
+  src\lib\api\common.py
+
+===================================================================
+2024-05-02 THUR v0.0.101
+
+[ Summary ]
+Pdf2FullText API
+
+[ Bug fix ]
+-Nil
+
+[ New ]
+- Nil
+
+[ Improvement ]
+- Remove all BaseModel classes
+- All TypedDict from typing_extensions
+- All data model properties uses Annotated attributes
+  Validation can also be defined as annotated attributes
+
+===================================================================
+2024-04-29 MON v0.0.100
+
+[ Summary ]
+Pdf2FullText API
+
+[ Bug fix ]
+-Nil
+
+[ New ]
+- Pdf2FullText
+- log and file structure
+
+[ Improvement ]
+- Nil
+
+===================================================================
+2024-04-25 THUR
+
+[ Summary ]
+Pdf text and meta data extraction
+
+[ Bug fix ]
+-Nil
+
+[ New ]
+- PdfParser (formerly PdfText)
+  - support pdf text blocks extraction
+  - support pdf meta data extraction
+
+[ Improvement ]
+- Nil
+
+===================================================================
+2024-04-24 WED
+
+[ Summary ]
+Using PyMuPDF for page counting and image generation.  Advantages of PyMuPDF
+1. Very fast in page counting, e.g. regal 17 pages, it counts in less than 10ms
+2. Very fast in image generation using dpi 150, e.g. regal 17 pages in 4.5 sec
+3. If 4 concurrent job (regal 17 pages)
+   - count < 7sec, image ~ 11sec
+NOTE: based on James home PC, Intel Core i7-6700 @ 3.40GHz, CPU Mark: 8093
+
+[ pdf to images Stats ]
+Case #1  : PyMuPDF,   regal 17 pages, 1 x job (single job)
+Case #2  : PyMuPDF,   regal 17 pages, 4 x jobs
+Case #2.1: pdf2image, regal 17 pages, 4 x jobs
+Case #3  : PyMuPDF,   regal 17 pages, 8 x jobs
+Case #3.1: pdf2image, regal 17 pages, 8 x jobs
+
+                       JW-Swivel    JW-Widefly     JW-Home
+#1    count page       < 10ms       < 10ms         < 10ms
+#1    convert images   < 1.5sec     < 2sec         < 2sec ??
+#1    total (+save)    < 2.8sec     < 4.5sec       < 4.sec 
+#1    page/sec         ~ 6.0        ~ 3.7          ~ 3.7                       
+
+#2    count page       < 10ms       < 10ms         ???
+#2.1  count page       < 10ms       
+#2    convert images   < 3sec       < 4.5sec       ???
+#2.1  convert images   < 6.5sec       
+#2    total (+save)    ~ 5.8sec     ~ 8sec         < 12sec 
+#2.1  total (+save)    ~ 9.3sec
+#2    page/sec         ~ 11.7       ~8.5           ~3.7                       
+#2.1  page/sec         ~ 7.3 
+
+#3    count page       < 10ms       < 10ms         ???
+#3.1  count page       < 10ms
+#3    convert images   < 5sec       < 6.8sec       ???
+#3.1  convert images   < 8sec
+#3    total (+save)    ~ 9.7sec     ~ 15sec        ???
+#3.1  total (+save)    ~ 11sec
+#3    page/sec         ~ 14         ~ 9            ???
+#3.1  page/sec         ~ 12         ~ 9            ???
+
+
+[ Bug fix ]
+-Nil
+
+[ New ]
+- Nil
+
+[ Improvement ]
+- Swivel Library - PdfText
+  1. Support both pdf2image and PyMuPDF images generation
+  2. PyMuPDF generates image fast by default dpi 150
+  3. Support pageIndexes, i.e. desired pages to be processed
+     Also support -ve index, e.g. -1 = last page
+
+===================================================================
+2024-04-22 MON
+
+[ Summary ]
+Introducing this new repo to Tom and Edwood
+
+[ Bug fix ]
+-Nil
+
+[ New ]
+- Swivel library -  MultiThreadQueueManager & MultiThreadQueueWorker
+  1. Multi-thread Queue Manager
+     - To create thread pool that shares a single job queue
+     - Support any type of QueueJob and QueueJobResult using Generic
+  2. Multi-thread Queue Worker
+     - The workers created by the Manager
+- Swivel Library - PdfText
+  1. Use PyMuPDF to count pdf no. of pages very fast
+
+[ Improvement ]
+- Nil
+
+===================================================================
+2024-04-21 SUN
+
+[ Summary ]
+The repo was born!
+
+[ Bug fix ]
+-Nil
+
+[ New ]
+- nil
+
+[ Improvement ]
+- Nil
+
+======================================================================
+Following are some hard config info for performance comparison
+
+JW-Widefly: CPU Mark: 8536
+            Intel Core i3-10105 @ 3.70GHz, 32GB RAM + SSD, 
+   JW-Home: CPU Mark: 8093
+            Intel Core i7-6700 @ 3.40GHz, 32GB RAM + SSD, 
