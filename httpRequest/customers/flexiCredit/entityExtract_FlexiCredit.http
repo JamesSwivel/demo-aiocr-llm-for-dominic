@@ -1,4 +1,4 @@
-@HostAddress = https://127.0.0.1:8000
+@HostAddress = https://xdata-staging.ddns.net:8000
 
 ### LLM entity extraction from flexiCredit receipts
 POST {{HostAddress}}/txt/upload/AI/LLM/entityExtract
