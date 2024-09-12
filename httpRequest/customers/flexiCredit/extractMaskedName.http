@@ -1,0 +1,51 @@
+@HostAddress = https://xdata-staging.ddns.net:8000
+
+
+## < test\flexiCredit\pdfs\flexiCredit-bocStatement.pdf
+## < test\flexiCredit\pdfs\flexiCredit-eStatementFile_20221221140843.pdf
+## < test\flexiCredit\pdfs\flexiCredit-eStatementFile_20230128100452.pdf
+
+
+### extractText
+POST {{HostAddress}}/pdf/upload/extractText
+Accept: application/json
+Content-Type: multipart/form-data; boundary=MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="req"
+
+{
+  "req": {
+    "id": "reference_id_00001"
+  },
+  "pdf": {
+    "pages": [],
+    "layout": "blocks"
+  },
+  "image": {
+    "isGen": true,
+    "isGenRoi": true,
+    "roiFilter": {
+      "keyword": {
+        "keywords": [
+          "Loan",
+          "Finance",
+          "Cash",
+          "Transfer",
+          "Thousands"
+        ],
+        "regexs": [
+          "[a-z]\\*+"
+        ]
+
+      }
+    }
+  }
+}
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5
+Content-Disposition: form-data; name="file"; filename="test-file-2.pdf"
+Content-Type: application/octet-stream
+
+< data\flexiCredit-eStatementFile_20230128100452.pdf
+--MyBoundary5d73155dbfd0c9661cc0a1cb7c2058a5--
+
