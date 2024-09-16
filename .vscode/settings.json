@@ -162,8 +162,8 @@
   // auto format
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "scm.showHistoryGraph": false
+  "scm.showHistoryGraph": false,
 
   // Rest client
-  // "rest-client.previewResponseInUntitledDocument": false
+  "rest-client.previewResponseInUntitledDocument": true
 }
