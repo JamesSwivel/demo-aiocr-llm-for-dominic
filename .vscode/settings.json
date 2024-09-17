@@ -55,6 +55,7 @@
     "imread",
     "iname",
     "javapath",
+    "Jebsen",
     "jsonable",
     "jwjwjw",
     "keygen",
@@ -107,6 +108,7 @@
     "ROIs",
     "runfile",
     "skimage",
+    "SSPP",
     "starlette",
     "strerror",
     "swivelsoftware",
@@ -163,7 +165,6 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "scm.showHistoryGraph": false,
-
   // Rest client
   "rest-client.previewResponseInUntitledDocument": true
 }

@@ -1,0 +1,165 @@
+##
+## Tools
+## - JSON to CSV
+##   https://www.convertcsv.com/json-to-csv.htm
+##
+
+@HostAddress = https://xdata-staging.ddns.net:8000
+
+### SSPP
+POST {{HostAddress}}/image/upload/extractByTemplate
+Accept: application/json
+Content-Type: multipart/form-data; boundary=MyBoundarygfklgjaiouODFsiuiodfgu98789df7gsidfjglkshrkjlthgdsfgsdfg
+
+--MyBoundarygfklgjaiouODFsiuiodfgu98789df7gsidfjglkshrkjlthgdsfgsdfg
+Content-Disposition: form-data; name="file"; filename="test.pdf"
+Content-Type: application/octet-stream
+
+< data\SSPP Remittance 20809315.png
+--MyBoundarygfklgjaiouODFsiuiodfgu98789df7gsidfjglkshrkjlthgdsfgsdfg
+Content-Disposition: form-data; name="req"
+
+{
+  "req": {
+    "id": "reference_id_00001"
+  },
+  "ocr": {
+    "template": {
+      "name": "sspp",
+      "engine": "ocr",
+      "ver": 1,
+      "docAnchor": {
+        "anchorType": "document",
+        "text": "REMITTANCE ADVICE",
+        "topLeft": [509, 148],
+        "width": 157,
+        "height": 22,
+        "pageWidth": 1526,
+        "pageHeight": 1080,
+        "pageNo": 1
+      },
+      "static": [
+        {
+          "pageNo": 1,
+          "pageWidth": 1654,
+          "pageHeight": 2338,
+          "fields": [
+            {
+                "key": "docNo",
+                "offsetRelativeTo": "page",
+                "offset": [617, 244],
+                "width": 234,
+                "height": 23,
+                "tolerance": 80,
+                "delimiter": "",
+                "isKeepNewLine": false
+            },
+            {
+                "key": "supplierId",
+                "offsetRelativeTo": "page",
+                "offset": [153, 300],
+                "width": 248,
+                "height": 27,
+                "tolerance": 80,
+                "delimiter": "",
+                "isKeepNewLine": false
+            },
+            {
+                "key": "totalBalance",
+                "offsetRelativeTo": "anchor",
+                "anchor": {
+                    "anchorType": "field",
+                    "text": "TOTAL BALANCE:",
+                    "topLeft": [669, -1]
+                },
+                "offset": [490, 0],
+                "width": 143,
+                "height": 27,
+                "tolerance": 80,
+                "delimiter": "",
+                "isKeepNewLine": false
+            }
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "key": "table",
+          "pageWidth": 1526,
+          "pageHeight": 1080,
+          "startAnchor": {
+            "anchorType": "table",
+            "topLeftX": 264,
+            "text": "Type",
+            "yOffset": 0
+          },
+          "endAnchor": {
+            "anchorType": "table",
+            "topLeftX": 669,
+            "text": "TOTAL BALANCE:",
+            "yOffset": 0
+          },
+          "conditionColAlign": "top",
+          "ignoreHeightFromTop": 1064,
+          "ignoreHeightFromBottom": 494,
+          "cols": [
+            {
+              "key": "invoiceAmount",
+              "colType": "condition",
+              "leftX": 809,
+              "width": 152,
+              "extractMode": "inRoi",
+              "contain": {
+                "type": "text",
+                "value": ""
+              },
+              "delimiter": " ",
+              "isKeepNewLine": false,
+              "tolerance": 80
+            },
+            {
+              "key": "InvoiceNo",
+              "colType": "simple",
+              "leftX": 356,
+              "width": 167,
+              "delimiter": " ",
+              "isKeepNewLine": false,
+              "tolerance": 80
+            },
+            {
+              "key": "InvoiceDescription",
+              "colType": "simple",
+              "leftX": 521,
+              "width": 310,
+              "delimiter": " ",
+              "isKeepNewLine": false,
+              "tolerance": 30
+            },
+            {
+              "key": "discountAmount",
+              "colType": "simple",
+              "leftX": 978,
+              "width": 143,
+              "delimiter": " ",
+              "isKeepNewLine": false,
+              "tolerance": 80
+            },
+            {
+              "key": "paymentAmount",
+              "colType": "simple",
+              "leftX": 1127,
+              "width": 164,
+              "delimiter": " ",
+              "isKeepNewLine": false,
+              "tolerance": 80
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "image": {
+    "isGenRoi": true
+  }
+}
+--MyBoundarygfklgjaiouODFsiuiodfgu98789df7gsidfjglkshrkjlthgdsfgsdfg--

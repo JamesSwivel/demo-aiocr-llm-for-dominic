@@ -1,4 +1,20 @@
 ===================================================================
+2024-09-17 TUE v1.0.6
+
+[ Summary ]
+https://github.com/JamesSwivel/demo-aiocr-llm-for-dominic/compare/1.0.5..1.0.6
+
+[ Bug fix ]
+- Nil
+
+[ New ]
+- Nil
+
+[ Improvement ]
+- httpRequest\customers\Jebsen\template_SSPP.http
+  Added new template
+
+===================================================================
 2024-09-16 FRI v1.0.5
 
 [ Summary ]
