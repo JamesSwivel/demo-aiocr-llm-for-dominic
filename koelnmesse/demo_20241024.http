@@ -1,3 +1,9 @@
+##
+## Tools
+## - JSON to CSV
+##   https://www.convertcsv.com/json-to-csv.htm
+##
+
 @HostAddress = https://xdata-staging.ddns.net:8000
 
 ### koelnmesse
@@ -10,6 +16,196 @@ Content-Disposition: form-data; name="file"; filename="test.pdf"
 Content-Type: application/octet-stream
 
 < pdf\AFT 2024 INBJ 76625115.pdf
+--MyBoundaryghfsgdfgerg3434trdfaddfasdfafq34werhgfhgfh
+Content-Disposition: form-data; name="req"
+
+{
+    "req": {
+        "id": "reference_id_00001"
+    },
+    "image": {
+        "isGen": true,
+        "isGenRoi": true
+    },
+    "pdf": {
+        "pages":[],
+        "template": {
+            "name": "koelnmesse",
+            "engine": "text",
+            "ver": 1,
+            "static": [
+                {
+                    "pageNo": 0,
+                    "pageWidth": 763,
+                    "pageHeight": 1080,
+                    "fields": [
+                        {
+                            "key": "invoiceAmount",
+                            "offsetRelativeTo": "anchor",
+                            "anchor": {
+                                "anchorType": "field",
+                                "text": "Total amount",
+                                "topLeft": [50, -1]
+                            },
+                            "offset": [406, 0],
+                            "width": 83,
+                            "height": 15,
+                            "tolerance": 80,
+                            "delimiter": "",
+                            "isKeepNewLine": false
+                        }
+                    ]
+                },
+                {
+                    "pageNo": 1,
+                    "pageWidth": 763,
+                    "pageHeight": 1080,
+                    "fields": [
+                        {
+                            "key": "invoiceNo",
+                            "offsetRelativeTo": "page",
+                            "offset": [543, 252],
+                            "width": 70,
+                            "height": 16,
+                            "tolerance": 80,
+                            "delimiter": "",
+                            "isKeepNewLine": false
+                        },
+                        {
+                            "key": "event",
+                            "offsetRelativeTo": "page",
+                            "offset": [47, 451],
+                            "width": 475,
+                            "height": 22,
+                            "tolerance": 80,
+                            "delimiter": "",
+                            "isKeepNewLine": false                            
+                        },
+                        {
+                            "key": "custNo",
+                            "offsetRelativeTo": "page",
+                            "offset": [544, 288],
+                            "width": 80,
+                            "height": 17,
+                            "tolerance": 80,
+                            "delimiter": "",
+                            "isKeepNewLine": false    
+                        },
+                        {
+                            "key": "hall",
+                            "offsetRelativeTo": "page",
+                            "offset": [49, 480],
+                            "width": 195,
+                            "height": 18,
+                            "tolerance": 80,
+                            "delimiter": "",
+                            "isKeepNewLine": false    
+                        },
+                        {
+                            "key": "orderNo/Date",
+                            "offsetRelativeTo": "page",
+                            "offset": [544, 324],
+                            "width": 115,
+                            "height": 19,
+                            "tolerance": 80,
+                            "delimiter": "",
+                            "isKeepNewLine": false    
+                        },
+                        {
+                            "key": "custName",
+                            "offsetRelativeTo": "page",
+                            "offset": [47, 571],
+                            "width": 485,
+                            "height": 18,
+                            "tolerance": 80,
+                            "delimiter": "",
+                            "isKeepNewLine": false    
+                        }
+                    ]
+                }
+            ],
+            "tables": [
+                {
+                    "key": "table",
+                    "pageWidth": 763,
+                    "pageHeight": 1080,
+                    "startAnchor": {
+                        "anchorType": "table",
+                        "topLeftX": 50,
+                        "text": "Description",
+                        "yOffset": 28
+                    },
+                    "endAnchor": {
+                        "anchorType": "table",
+                        "topLeftX": 50,
+                        "text": "Net amount",
+                        "yOffset": 28
+                    },
+                    "conditionColAlign": "bottom",
+                    "ignoreHeightFromTop": 250,
+                    "ignoreHeightFromBottom": 0,
+                    "cols": [
+                        {
+                            "key": "totalPrice",
+                            "colType": "condition",
+                            "leftX": 437,
+                            "width": 100,
+                            "extractMode": "inRoi",
+                            "contain": {
+                                "type": "text",
+                                "value": ""
+                            },
+                            "delimiter": "",
+                            "isKeepNewLine": false,
+                            "tolerance": 80
+                        },
+                        {
+                            "key": "unitPrice",
+                            "colType": "simple",
+                            "leftX": 369,
+                            "width": 65,
+                            "delimiter": "",
+                            "isKeepNewLine": false,
+                            "tolerance": 80
+                        },
+                        {
+                            "key": "qty",
+                            "colType": "simple",
+                            "leftX": 256,
+                            "width": 42,
+                            "delimiter": "",
+                            "isKeepNewLine": false,
+                            "tolerance": 80
+                        },
+                        {
+                            "key": "description",
+                            "colType": "simple",
+                            "leftX": 50,
+                            "width": 206,
+                            "delimiter": "",
+                            "isKeepNewLine": true,
+                            "tolerance": 25
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
+--MyBoundaryghfsgdfgerg3434trdfaddfasdfafq34werhgfhgfh--
+
+
+
+### koelnmesse
+POST {{HostAddress}}/pdf/upload/extractByTemplate
+Accept: application/json
+Content-Type: multipart/form-data; boundary=MyBoundaryghfsgdfgerg3434trdfaddfasdfafq34werhgfhgfh
+
+--MyBoundaryghfsgdfgerg3434trdfaddfasdfafq34werhgfhgfh
+Content-Disposition: form-data; name="file"; filename="test.pdf"
+Content-Type: application/octet-stream
+
+< pdf\AFT 2024 INBJ 76625106.pdf
 --MyBoundaryghfsgdfgerg3434trdfaddfasdfafq34werhgfhgfh
 Content-Disposition: form-data; name="req"
 
