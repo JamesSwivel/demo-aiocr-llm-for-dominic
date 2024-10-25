@@ -2,6 +2,7 @@
 core
 *.swp
 *.pyc
+~*.xlsx
 
 ## ignore temporary files by Jupyter notebook
 ipynb_checkpoints/
