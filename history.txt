@@ -1,4 +1,19 @@
 ===================================================================
+2024-10-25 TUE v1.0.7
+
+[ Summary ]
+https://github.com/JamesSwivel/demo-aiocr-llm-for-dominic/compare/1.0.6..1.0.7
+
+[ Bug fix ]
+- Nil
+
+[ New ]
+- Nil
+
+[ Improvement ]
+- Nil
+
+===================================================================
 2024-09-17 TUE v1.0.6
 
 [ Summary ]
